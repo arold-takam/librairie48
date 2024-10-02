@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librairie/48-Connexion</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/inscription.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="/"><img src="{% static 'images/logo_lib.png'%}" alt=""></a>
+        <nav>
+            <div id="search">
+                <p>Search your book here...</p>
+                <figure>
+                    <img src="{% static 'images/Chercher.png'%}" alt="">
+                </figure>
+            </div>
+            <ul>
+                <li><a href="/">ACCEUIL</a></li>
+                <li id="cate">
+                    CATEGORIE
+                    <img src="{% static 'images/Trianglew.png'%}" alt="" id="arrow" style="transition: 0.5s;">
+                </li>
+                <li><a href="#">MENU</a></li>
+            </ul>
+        </nav>
+        <figure>
+            <img src="{% static 'images/Utilisateur.png' %}" alt="">
+            <figcaption><a href="{% url 'connexion' %}">log in</a></figcaption>
+        </figure>
+    </header>
+    <main>
+        <h1>Inscription a <strong>Librairie/48</strong></h1>
+        <fieldset>
+            <form method="POST" enctype="multipart/form-data">  <!-- Ajout de enctype pour gérer les fichiers -->
+                {% csrf_token %}
+                <div id="champ">
+                    <label for="id_noms">Nom</label>
+                    <input type="text" name="noms" id="id_noms" required minlength="3" value="{{ form.noms.value }}">
+                </div>
+                <div id="champ">
+                    <label for="id_password1">Mot de passe</label>
+                    <input type="password" name="password1" id="id_password1" required>
+                </div>
+                <div id="champ">
+                    <label for="id_password2">Confirmer le mot de passe</label>
+                    <input type="password" name="password2" id="id_password2" required>
+                </div>
+                <div id="champ">
+                    <label for="id_image">Photo de profil</label>
+                    <input type="file" name="image" id="id_image" required style="color: white; font-size: large;">
+                </div>
+                <button type="submit">S'inscrire</button>
+            </form>
+        </fieldset>
+        <div class="error">
+            <ul>
+            {% for field, errors in form.errors.items %}
+                <li>{{ field }}: {{ errors|join:", " }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <h3>You Can Join Us On</h3>
+        <ul>
+            <li><img src="{% static 'images/Youtube Encadré.png'%}" alt=""></li>
+            <li><img src="{% static 'images/Facebook.png'%}" alt=""></li>
+            <li><img src="{% static 'images/Twitterx.png'%}" alt=""></li>
+        </ul>
+        <h5><a href="#">Politique de confidentialité</a></h5>
+        <div id="cop">
+            <img src="{% static 'images/Copyright.png'%}" alt="">
+            <h4>LIBRATY/48-2021. All Right Reserved !</h4>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

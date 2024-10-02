@@ -1,0 +1,209 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Alfa Slab One" Arial, Helvetica, sans-serif;
+}
+
+header{
+    position: sticky;
+    top: 0vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #0026ff;
+    padding: 1rem 0rem;
+    z-index: 100;
+}
+
+header nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+
+header nav #search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    width: 60%;
+    border-radius: 2rem;
+    margin-bottom: 3rem;
+}
+
+header nav #search p{
+    position: relative;
+    left: 10%;
+    font-size: larger;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.466);
+}
+
+header nav #search figure{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    background-color: #ff6905;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+header nav ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    list-style: none;
+}
+
+header nav ul #cate{
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+header nav ul li a:hover{
+    color: #ff6905;
+}
+
+header nav ul li a{
+    font-size: x-large;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+header figure{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+header figure img{
+    width: 80%;
+    height: 50%;
+    border-radius: 100%;
+}
+
+
+header figure figcaption a{
+    font-size: x-large;
+    font-weight: bold;
+    color: white;
+}
+
+#cat{
+    position: fixed;
+    top: 16vh;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
+    background-color: #0026ff86;
+    z-index: 99;
+    visibility: hidden;
+    transition: 0.5s;
+}
+#cat ul{
+    width: 100%;
+    text-align: center;
+    list-style: none;
+}
+
+#cat ul li{
+    background-color: rgba(255, 255, 255, 0.753);
+    margin: 1rem 0rem;
+    padding: 1rem 0rem;
+}
+
+#cat ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: xx-large;
+    transition: 0.5s;
+}
+
+#cat ul li:hover a{
+    color: #ff6905;
+    text-decoration: underline;
+}
+
+main{
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main h1{
+    font-size: 3rem;
+    font-weight: bolder;
+    text-align: center;
+    text-decoration: underline;
+    color: #ff6905;
+    margin-bottom: 5%;
+}
+
+main p{
+    font-size: xx-large;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 10vh;
+    z-index: 1;
+    background-color: #0026ff;
+    margin-bottom: 0.5rem;
+}
+
+footer h3{
+    text-align: center;
+    color: white;
+    font-size: xx-large;
+    margin: 2rem 0rem;
+}
+
+footer ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+footer ul li img{
+    width: auto;
+    height: 4rem;
+}
+
+footer h5 a{
+    text-align: center;
+    color: white;
+    font-size: large;
+}
+
+footer #cop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+footer #cop h4{
+    text-align: center;
+    color: white;
+    font-size: large;
+}

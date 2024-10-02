@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librairie/48 - Emprunt</title>
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'css/emprunt.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <!-- Logo de la librairie -->
+        <a href="/"><img src="{% static 'images/logo_lib.png' %}" alt="Logo de la librairie"></a>
+        
+        <!-- Barre de navigation -->
+        <nav>
+            <!-- Section de recherche -->
+            <div id="search">
+                <p>Search your book here...</p>
+                <figure>
+                    <img src="{% static 'images/Chercher.png' %}" alt="Icone de recherche">
+                </figure>
+            </div>
+            
+            <!-- Liens de navigation -->
+            <ul>
+                <li><a href="/">ACCEUIL</a></li>
+                <li id="cate">
+                    CATEGORIE
+                    <img src="{% static 'images/Trianglew.png' %}" alt="Triangle" id="arrow" style="transition: 0.5s;">
+                </li>
+                <li><a href="#">MENU</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Section de profil utilisateur -->
+        <figure>
+            {% if request.user.is_authenticated %}
+                <!-- Afficher l'image de profil si l'utilisateur est connecté -->
+                {% if request.user.image %}
+                    <img src="{{ request.user.image.url }}" alt="Profil de {{ request.user.noms }}" 
+                         onerror="this.onerror=null; this.src='{% static ';images/default_profile.png;' %}'">
+                {% else %}
+                    <img src="{% static 'images/default_profile.png' %}" alt="Profil par défaut">
+                {% endif %}
+                <figcaption><a href="{% url 'logout' %}">Logout</a></figcaption>
+            {% else %}
+                <!-- Afficher une icône par défaut si l'utilisateur n'est pas connecté -->
+                <img src="{% static 'images/Utilisateur.png' %}" alt="Utilisateur">
+                <figcaption><a href="{% url 'connexion' %}">log In</a></figcaption>
+            {% endif %}
+        </figure>
+    </header>
+    <main>
+        <h1>Emprunt pour le livre<br><strong>{{ livre.noms }}</strong></h1>
+        <fieldset>
+            <form method="POST">  <!-- Assurez-vous d'utiliser POST -->
+                {% csrf_token %}
+                <div id="champ">
+                    <label for="long">Durée de l'emprunt (en jours)</label>
+                    <input type="number" name="duree" id="long" required>
+                </div>
+                <div id="champ1">
+                    <label for="pay">Type de paiement</label>
+                    <select name="paiement" id="pay" required>
+                        <option value="mobile_money" selected>Mobile Money</option>
+                        <option value="credit_card">Credit Card</option>
+                        <option value="bitcoin">BitCoin</option>
+                    </select>
+                </div>
+                <button type="submit">VALIDER</button>
+            </form>
+        </fieldset>
+        <h2>Dans la même sélection</h2>
+        <ul>
+            {% for livre_similaire in livres_similaires %}
+                <li>
+                    <img src="{% static 'images/librairie.jpeg' %}" alt="{{ livre_similaire.noms }}">
+                    <a href="{% url 'emprunt' livre_similaire.id %}">{{ livre_similaire.noms }}</a>
+                </li>
+            {% endfor %}
+            <li><a href="{% url 'categorie' categorie.id %}">Voir plus...</a></li>  <!-- Lien vers la catégorie -->
+        </ul>
+    </main>
+    <footer>
+        <h3>You Can Join Us On</h3>
+        <ul>
+            <li><img src="{% static 'images/Youtube Encadré.png' %}" alt=""></li>
+            <li><img src="{% static 'images/Facebook.png' %}" alt=""></li>
+            <li><img src="{% static 'images/Twitterx.png' %}" alt=""></li>
+        </ul>
+        <h5><a href="#">Politique de confidentialité</a></h5>
+        <div id="cop">
+            <img src="{% static 'images/Copyright.png' %}" alt="">
+            <h4>LIBRATY/48-2021. All Right Reserved !</h4>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>
