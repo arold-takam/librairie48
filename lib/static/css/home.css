@@ -12,7 +12,7 @@ header{
     justify-content: space-around;
     align-items: center;
     background-color: #0026ff;
-    padding: 1rem 0rem;
+    padding: 0.5rem 0rem;
     z-index: 100;
 }
 
@@ -88,8 +88,9 @@ header figure{
 
 header figure img{
     width: 80%;
-    height: 50%;
+    height: 5rem;
     border-radius: 100%;
+    object-fit: fill;
 }
 
 header figure figcaption a{
